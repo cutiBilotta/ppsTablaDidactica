@@ -1,0 +1,23 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribuye uniformemente el espacio entre las imágenes */
+    align-content: space-around; /* Distribuye uniformemente el espacio entre las filas */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: antiquewhite;
+  }
+  
+  #container img {
+    width: calc(50% - 50px); /* Calcula el ancho de cada imagen (50% del contenedor menos el margen) */
+    margin: 3px; /* Espacio entre las imágenes */
+  }
+
+  @keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .parpadeo {
+    animation: parpadeo 1s infinite;
+  }

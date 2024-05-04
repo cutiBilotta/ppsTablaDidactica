@@ -1,0 +1,30 @@
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+
+    <div [ngClass]="{'parpadeo': mostrarParpadeo}">
+      
+      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)" ></app-idiomas>
+
+    </div>
+    <br>
+    <br>
+
+    <img src="../../assets/img/animales/hipopotamo.png" alt="" (click)="reproducirAudio('hipopotamo.mp3')">
+    <img src="../../assets/img/animales/leon.png" alt="" (click)="reproducirAudio('leon.mp3')">
+    <img src="../../assets/img/animales/tigre.png" alt="" (click)="reproducirAudio('tigre.mp3')">
+    <img src="../../assets/img/animales/chancho.png" alt="" (click)="reproducirAudio('chancho.mp3')">
+    <img src="../../assets/img/animales/elefante.png" alt="" (click)="reproducirAudio('elefante.mp3')">
+    <img src="../../assets/img/animales/cebra.png" alt="" (click)="reproducirAudio('cebra.mp3')">
+    <img src="../../assets/img/animales/jirafa.png" alt="" (click)="reproducirAudio('jirafa.mp3')">
+    <img src="../../assets/img/animales/mono.png" alt="" (click)="reproducirAudio('mono.mp3')"> 
+    <img src="../../assets/img/animales/tucan.png" alt="" (click)="reproducirAudio('tucan.mp3')">
+    <img src="../../assets/img/animales/gallina.png" alt="" (click)="reproducirAudio('gallina.mp3')">
+
+
+
+
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,30 @@
+
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+
+    <div [ngClass]="{'parpadeo': mostrarParpadeo}">
+
+      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)" ></app-idiomas>
+      </div>
+  
+    <br>
+    <br>
+
+    <img src="../../assets/img/numeros/0.png" alt="" (click)="reproducirAudio('0.mp3')">
+    <img src="../../assets/img/numeros/1.png" alt="" (click)="reproducirAudio('1.mp3')">
+    <img src="../../assets/img/numeros/2.png" alt="" (click)="reproducirAudio('2.mp3')">
+    <img src="../../assets/img/numeros/3.png" alt="" (click)="reproducirAudio('3.mp3')">
+    <img src="../../assets/img/numeros/4.png" alt="" (click)="reproducirAudio('4.mp3')">
+    <img src="../../assets/img/numeros/5.png" alt="" (click)="reproducirAudio('5.mp3')">
+    <img src="../../assets/img/numeros/6.png" alt="" (click)="reproducirAudio('6.mp3')">
+    <img src="../../assets/img/numeros/7.png" alt="" (click)="reproducirAudio('7.mp3')">
+    <img src="../../assets/img/numeros/8.png" alt="" (click)="reproducirAudio('8.mp3')"> 
+    <img src="../../assets/img/numeros/9.png" alt="" (click)="reproducirAudio('9.mp3')">
+
+
+
+
+  </div>
+
+</ion-content>

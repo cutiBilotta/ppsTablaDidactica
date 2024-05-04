@@ -1,0 +1,22 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgb(255, 238, 163);
+  height: 100vh; /* Establece la altura del contenedor al 100% del alto de la ventana */
+}
+
+img {
+  height: 15%;
+  margin: 5px; /* Espacio entre las imágenes */
+}
+
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.parpadeo {
+  animation: parpadeo 1s infinite;
+}

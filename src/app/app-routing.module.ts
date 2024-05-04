@@ -8,9 +8,31 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+  },
+
+  {
+    path: 'animales',
+    loadChildren: () => import('./animales/animales.module').then( m => m.AnimalesPageModule)
+  },
+  {
+    path: 'numeros',
+    loadChildren: () => import('./numeros/numeros.module').then( m => m.NumerosPageModule)
+  },
+  {
+    path: 'colores',
+    loadChildren: () => import('./colores/colores.module').then( m => m.ColoresPageModule)
+  },
+
 ];
 
 @NgModule({
