@@ -1,30 +1,39 @@
-
-
 <ion-content [fullscreen]="true">
   <div id="container">
 
     <div [ngClass]="{'parpadeo': mostrarParpadeo}">
-
-    <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)" ></app-idiomas>
+      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
     </div>
 
     <br>
     <br>
 
-    <img src="../../assets/img/colores/amarillo.png" alt="" (click)="reproducirAudio('amarillo.mp3')">
-    <img src="../../assets/img/colores/azul.png" alt="" (click)="reproducirAudio('azul.mp3')">
-    <img src="../../assets/img/colores/negro.png" alt="" (click)="reproducirAudio('negro.mp3')">
-    <img src="../../assets/img/colores/blanco.png" alt="" (click)="reproducirAudio('blanco.mp3')">
-    <img src="../../assets/img/colores/verde.png" alt="" (click)="reproducirAudio('verde.mp3')">
-    <img src="../../assets/img/colores/rosa.png" alt="" (click)="reproducirAudio('rosa.mp3')">
-    <img src="../../assets/img/colores/naranja.png" alt="" (click)="reproducirAudio('naranja.mp3')">
-    <img src="../../assets/img/colores/violeta.png" alt="" (click)="reproducirAudio('violeta.mp3')">
-    <img src="../../assets/img/colores/gris.png" alt="" (click)="reproducirAudio('gris.mp3')"> 
-    <img src="../../assets/img/colores/rojo.png" alt="" (click)="reproducirAudio('rojo.mp3')">
+    <!-- Utiliza ngIf para mostrar diferentes estructuras según la orientación -->
+    <ng-container *ngIf="orientation === 'landscape-primary'; else portraitLayout">
+      <ion-grid>
+        <!-- Generamos dos filas -->
+        <ion-row *ngFor="let row of [0, 1]">
+          <!-- Utilizamos un contador para rastrear el número de imágenes mostradas en cada fila -->
+          <ng-container *ngFor="let color of colores.slice(row * 5, (row + 1) * 5); let i = index">
+            <ion-col size="2"> <!-- Cambiado a size="1" para que cada columna ocupe el 20% del ancho -->
+              <div class="landscape-row">
+                <img height="100px" width="100px" src="../../assets/img/colores/{{color}}.png" alt="" (click)="reproducirAudio('{{color}}.mp3')">
+              </div>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
 
-
-
+    <ng-template #portraitLayout>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let color of colores">
+            <img height="100px" width="100px" src="../../assets/img/colores/{{color}}.png" alt="" (click)="reproducirAudio('{{color}}.mp3')">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
 
   </div>
-
 </ion-content>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
+
 @Component({
   selector: 'app-colores',
   templateUrl: './colores.page.html',
@@ -13,18 +15,31 @@ export class ColoresPage implements OnInit {
 
   private idiomaSeleccionado : string="";
   
+  orientation: string = '';
   audioSrc: string = "../../assets/audios/colores/"; 
   preload: boolean = true;
   mostrarParpadeo:boolean = false;
-
+  public colores = ['negro' , 'amarillo', 'azul', 'blanco', 'rojo','verde', 'violeta', 'gris', 'rosa', 'naranja']
   ngOnInit() {
+    // Obtener la orientación actual de la pantalla al inicio
+    this.getOrientation();
 
-    this.router.queryParams.subscribe(params => {
-      this.idiomaSeleccionado = params['dato'];
+    // Escuchar cambios en la orientación de la pantalla
+    ScreenOrientation.addListener('screenOrientationChange', (orientation) => {
+      this.getOrientation();
     });
-
-
   }
+
+  getOrientation() {
+    ScreenOrientation.orientation()
+      .then((result) => {
+        this.orientation = result.type;
+      })
+      .catch((error) => {
+        console.error('Error al obtener la orientación de la pantalla:', error);
+      });
+  }
+
 
   onIdiomaSeleccionado(idioma: string) {
     this.idiomaSeleccionado = idioma;
@@ -48,6 +63,9 @@ export class ColoresPage implements OnInit {
   audioEnded() {
     console.log('Audio terminado');
   }
+
+
+ 
 }
 
 

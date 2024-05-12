@@ -17,6 +17,7 @@ export class AnimalesPage implements OnInit {
   audioSrc: string = "../../assets/audios/animales/"; 
   preload: boolean = true;
   mostrarParpadeo :boolean= false;
+  public animales = ['leon', 'elefante', 'hipopotamo', 'tucan', 'jirafa', 'tigre', 'chancho' , 'cebra', 'mono', 'gallina'];
 
   ngOnInit() {
 

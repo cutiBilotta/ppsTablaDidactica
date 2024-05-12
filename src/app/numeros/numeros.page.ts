@@ -22,7 +22,7 @@ export class NumerosPage implements OnInit {
   audioSrc: string = "../../assets/audios/numeros/"; 
   preload: boolean = true;
   mostrarParpadeo: boolean=false;
-
+  public numeros = [1,2,3,4,5,6,7,8,9];
   ngOnInit() {
 
     this.router.queryParams.subscribe(params => {
