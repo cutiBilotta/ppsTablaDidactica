@@ -4,12 +4,14 @@
 
     <br><br>
 
-    <div style="display: flex; justify-content: center;">
-      <img src="../../assets/img/world.png" height="100px">
-    </div>
+    
 
     <br>
    <ion-card style="background-color: #ddd;" >
+<br>
+    <div style="display: flex; justify-content: center;">
+      <img src="../../assets/img/world.png" height="100px">
+    </div>
  
    <ion-card-header class="ion-text-center ion-text-bold">
      Login
@@ -29,7 +31,7 @@
      
    <br> 
      <div class="ion-align-items-center ion-text-center">
-       <ion-button color="success" block (click)="verificarUsuarioExistente()">Ingresar</ion-button>
+       <ion-button color="secondary" shape="round"  block (click)="verificarUsuarioExistente()">Ingresar</ion-button>
        <br>  
  
  
@@ -37,42 +39,37 @@
            {{mensaje}}
        </div>
      </div>
+
+     <div *ngIf="mostrarSpinner" class="spinner">
+      <img src="../../assets/img/world.png" height="30px" class="spinner">
+    </div>
+
+
+     <div class="ion-align-items-center ion-text-center">
+      <br><p>Perfiles para acceso rápido:</p> <br>
+
+      <ion-button shape="round"  block (click)="autocompletarUsurio1()">Admin</ion-button>
+      <br>  
+    </div>
+  
+    <div class="ion-align-items-center ion-text-center">
+      <ion-button  shape="round"  block (click)="autocompletarUsurio2()">Invitado</ion-button>
+      <br>  
+    </div>
+  
+    <div class="ion-align-items-center ion-text-center">
+      <ion-button shape="round" class="ion-button-small"  block (click)="autocompletarUsurio3()">Usuario</ion-button>
+      <br>  
+    </div>
  
  
    </ion-card-content>
  </ion-card>
 
- <div *ngIf="mostrarSpinner" class="spinner">
-  <img src="../../assets/img/world.png" height="30px" class="spinner">
-</div>
+ 
  <br>
  
- <ion-card style="background-color: #cac8c8;">
-   <ion-card-header class="ion-text-center ion-text-bold">
-     Ingreso Rápido
-   </ion-card-header>
  
-   <div class="ion-align-items-center ion-text-center">
-     <ion-button color="primary" block (click)="autocompletarUsurio1()">Admin</ion-button>
-     <br>  
-   </div>
- 
-   <div class="ion-align-items-center ion-text-center">
-     <ion-button color="primary" block (click)="autocompletarUsurio2()">Invitado</ion-button>
-     <br>  
-   </div>
- 
-   <div class="ion-align-items-center ion-text-center">
-     <ion-button class="ion-button-small" color="primary" block (click)="autocompletarUsurio3()">Usuario</ion-button>
-     <br>  
-   </div>
- 
-   <br>
- 
- 
- 
- 
- </ion-card>
  
 </div>
  </ion-content>

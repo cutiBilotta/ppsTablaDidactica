@@ -5,14 +5,39 @@
       <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
     </div>
 
+    <!-- Utiliza ngIf para mostrar diferentes estructuras según la orientación -->
+    <ng-container *ngIf="orientation === 'landscape-primary'; else portraitLayout">
+      <br><br><br>
+      <ion-grid>
+        <!-- Generamos dos filas -->
+        <ion-row>
+          <!-- Primera fila con seis elementos de tamaño 2 -->
+          <ion-col *ngFor="let animal of animales.slice(0, 6)" size="2">
+            <div class="landscape-row">
+              <img height="100px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <!-- Segunda fila con cuatro elementos de tamaño 3 -->
+          <ion-col *ngFor="let animal of animales.slice(6, 10)" size="3">
+            <div class="landscape-row">
+              <img height="100px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" *ngFor="let animal of animales">
-          <img height="100px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio('{{animal}}.mp3')">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ng-template #portraitLayout>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let animal of animales">
+            <img height="80px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal +'.mp3')">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
 
   </div>
 </ion-content>

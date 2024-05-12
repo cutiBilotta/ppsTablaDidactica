@@ -12,15 +12,21 @@
     <ng-container *ngIf="orientation === 'landscape-primary'; else portraitLayout">
       <ion-grid>
         <!-- Generamos dos filas -->
-        <ion-row *ngFor="let row of [0, 1]">
-          <!-- Utilizamos un contador para rastrear el número de imágenes mostradas en cada fila -->
-          <ng-container *ngFor="let color of colores.slice(row * 5, (row + 1) * 5); let i = index">
-            <ion-col size="2"> <!-- Cambiado a size="1" para que cada columna ocupe el 20% del ancho -->
-              <div class="landscape-row">
-                <img height="100px" width="100px" src="../../assets/img/colores/{{color}}.png" alt="" (click)="reproducirAudio('{{color}}.mp3')">
-              </div>
-            </ion-col>
-          </ng-container>
+        <ion-row>
+          <!-- Primera fila con seis elementos de tamaño 2 -->
+          <ion-col *ngFor="let color of colores.slice(0, 6)" size="2">
+            <div class="landscape-row">
+              <img height="100px" width="100px" src="../../assets/img/colores/{{color}}.png" alt="" (click)="reproducirAudio('{{color}}.mp3')">
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <!-- Segunda fila con cuatro elementos de tamaño 3 -->
+          <ion-col *ngFor="let color of colores.slice(6, 10)" size="3">
+            <div class="landscape-row">
+              <img height="100px" width="100px" src="../../assets/img/colores/{{color}}.png" alt="" (click)="reproducirAudio('{{color}}.mp3')">
+            </div>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ng-container>

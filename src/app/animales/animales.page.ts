@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 @Component({
   selector: 'app-animales',
@@ -14,6 +15,8 @@ export class AnimalesPage implements OnInit {
 
   private idiomaSeleccionado : string="";
   
+  orientation: string = '';
+
   audioSrc: string = "../../assets/audios/animales/"; 
   preload: boolean = true;
   mostrarParpadeo :boolean= false;
@@ -21,13 +24,26 @@ export class AnimalesPage implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.animales);
     this.router.queryParams.subscribe(params => {
       this.idiomaSeleccionado = params['dato'];
     });
 
-
+    ScreenOrientation.addListener('screenOrientationChange', (orientation) => {
+      this.getOrientation();
+    });
   }
 
+  getOrientation() {
+    ScreenOrientation.orientation()
+      .then((result) => {
+        this.orientation = result.type;
+      })
+      .catch((error) => {
+        console.error('Error al obtener la orientación de la pantalla:', error);
+      });
+  }
+  
   onIdiomaSeleccionado(idioma: string) {
     this.idiomaSeleccionado = idioma;
   }
