@@ -69,6 +69,11 @@ export class NumerosPage implements OnInit {
   audioEnded() {
     console.log('Audio terminado');
   }
+
+  redireccionar(url: string){
+
+    this.route.navigateByUrl(url);
+  }
 }
   
 

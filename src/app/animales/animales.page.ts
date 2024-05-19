@@ -67,4 +67,9 @@ export class AnimalesPage implements OnInit {
   audioEnded() {
     console.log('Audio terminado');
   }
+
+  redireccionar(url: string){
+
+    this.route.navigateByUrl(url);
+  }
 }

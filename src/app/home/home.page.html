@@ -1,16 +1,13 @@
+<ion-content>
+  <div id="container">
 
-<ion-content >
+    <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
 
-    <div id="container">
-      
-      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
 
-      <h1>{{idiomaSeleccionado}}</h1>
-      <img color="tertiary" src="../../assets/img/all-animals.png" alt="" height="170px" width="170px" (click)="elegirSeccion('animales')">
-      <img color="tertiary" src="../../assets/img/all-color.png" alt="" height="170px" width="170px" (click)="elegirSeccion('colores')">
-      <img color="tertiary"  src="../../assets/img/all-numbers.png" alt="" height="170px" width="170px" (click)="elegirSeccion('numeros')">
-  
-      
-  
-    </div>
-  </ion-content>
+    <br>
+    <img class="img" src="../../assets/img/all-animals.png" alt="" height="180px" width="180px" (click)="elegirSeccion('animales')">
+    <img class="img" src="../../assets/img/all-color.png" alt="" height="180px" width="180px" (click)="elegirSeccion('colores')">
+    <img class="img" src="../../assets/img/all-numbers.png" alt="" height="180px" width="180px" (click)="elegirSeccion('numeros')">
+    <img class="logoff-img" src="../../assets/img/logOff.png" alt="" (click)="cerrarSesion()">
+  </div>
+</ion-content>

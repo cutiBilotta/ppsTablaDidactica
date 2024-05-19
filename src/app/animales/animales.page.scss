@@ -2,16 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   height: 100vh;
   width: 100vw;
-  position: relative;
-  overflow: hidden; /* Evita que se genere scroll */
-
+  overflow: hidden;
 }
 
 #container::before {
@@ -23,18 +19,10 @@
   height: 100%;
   background-image: url('../../assets/img/fondo.jpeg');
   background-size: cover;
-  opacity: 0.1; /* Ajusta la opacidad según tu preferencia */
-  z-index: -1; /* Asegura que esté detrás de los elementos hijos */
+  opacity: 0.1;
+  z-index: -1;
 }
 
-img {
-  width: 100%; /* Establece el ancho de las imágenes */
-  height: auto; /* Mantiene la proporción de aspecto */
-  margin: 1px; /* Espacio entre las imágenes */
-  display: block; /* Esto ayuda a centrar verticalmente la imagen */
-  margin-left: auto; /* Centra horizontalmente la imagen */
-  margin-right: auto; /* Centra horizontalmente la imagen */
-}
 
 @keyframes parpadeo {
   0% { opacity: 1; }
@@ -46,9 +34,4 @@ img {
   animation: parpadeo 1s infinite;
 }
 
-/* Media queries para ajustar el diseño en función del tamaño de la pantalla */
-@media (max-width: 768px) {
-  img {
-    width: 60%; /* Ajusta el ancho de las imágenes para pantallas más pequeñas */
-  }
-}
+

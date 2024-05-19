@@ -1,28 +1,24 @@
 <ion-content [fullscreen]="true">
   <div id="container">
 
-    <div [ngClass]="{'parpadeo': mostrarParpadeo}">
-      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
-    </div>
+          <div id="header" [ngClass]="{'parpadeo': mostrarParpadeo}">
+            <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
+          </div>
+       
 
-    <!-- Utiliza ngIf para mostrar diferentes estructuras según la orientación -->
     <ng-container *ngIf="orientation === 'landscape-primary'; else portraitLayout">
-      <br><br><br>
-      <ion-grid>
-        <!-- Generamos dos filas -->
+      <ion-grid fixed="true" style="margin-top:20px;"  >
         <ion-row>
-          <!-- Primera fila con seis elementos de tamaño 2 -->
           <ion-col *ngFor="let animal of animales.slice(0, 6)" size="2">
             <div class="landscape-row">
-              <img height="100px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
+              <img src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
-          <!-- Segunda fila con cuatro elementos de tamaño 3 -->
           <ion-col *ngFor="let animal of animales.slice(6, 10)" size="3">
             <div class="landscape-row">
-              <img height="100px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
+              <img style="height: 95px;" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
             </div>
           </ion-col>
         </ion-row>
@@ -30,14 +26,25 @@
     </ng-container>
 
     <ng-template #portraitLayout>
-      <ion-grid>
+      <ion-grid fixed="true">
         <ion-row>
-          <ion-col size="6" *ngFor="let animal of animales">
-            <img height="80px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal +'.mp3')">
+          <ion-col size="6" *ngFor="let animal of animales" style="justify-content: center; text-align: center;">
+            <img style="height: 90px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal +'.mp3')">
           </ion-col>
         </ion-row>
       </ion-grid>
     </ng-template>
+
+
+    <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+      <ion-fab-button color="dark">
+        <img style="padding: 5px;" src="../../assets/img/all-numbers.png" (click)="redireccionar('numeros')">
+      </ion-fab-button>
+    
+      <ion-fab-button color="dark">
+        <img src="../../assets/img/all-color.png" (click)="redireccionar('colores')">
+      </ion-fab-button>
+    </ion-fab>
 
   </div>
 </ion-content>

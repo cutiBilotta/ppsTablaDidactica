@@ -21,16 +21,26 @@
   height: 100%;
   background-image: url('../../assets/img/fondo.jpeg');
   background-size: cover;
-  opacity: 0.3; /* Ajusta la opacidad según tu preferencia */
-  z-index: -1; /* Asegura que esté detrás de los elementos hijos */
+  opacity: 0.3;
+  z-index: -1;
 }
 
-img {
-  margin-top: 20px;
+.img {
+  margin-top: 5px;
   background-color: rgb(181, 178, 242);
   border: rgb(109, 93, 154) solid 4px;
   border-radius: 10%;
   display: block;
-  position: relative; /* Asegura que la imagen esté por encima del pseudo-elemento */
-  z-index: 1; /* Asegura que la imagen esté por encima del pseudo-elemento */
+  position: relative;
+  z-index: 1;
+}
+
+.logoff-img {
+  height: 40px; /* Ajusta el alto de la imagen de cerrar sesión aquí */
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: brown;
+  border-radius: 10%;
+  padding: 5px;
 }

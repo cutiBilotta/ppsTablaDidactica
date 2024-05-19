@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router, NavigationExtras , ActivatedRoute  } from '@angular/router';
 import { SharedModuleModule } from '../modules/shared-module/shared-module.module';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,7 +9,7 @@ import { SharedModuleModule } from '../modules/shared-module/shared-module.modul
 })
 export class HomePage {
 
-  constructor(public router: Router, ) {}
+  constructor(public router: Router, private afAuth: AngularFireAuth ) {}
 
     public idiomaSeleccionado : string  ="";
 
@@ -30,4 +31,15 @@ export class HomePage {
     }
 
   }
+
+  async cerrarSesion() {
+
+
+  
+    // Cerrar la sesión y redirigir al usuario a la página de inicio de sesión
+    await this.afAuth.signOut();
+    this.router.navigateByUrl('login');
+  }
+
+ 
 }

@@ -64,7 +64,10 @@ export class ColoresPage implements OnInit {
     console.log('Audio terminado');
   }
 
+  redireccionar(url: string){
 
+    this.route.navigateByUrl(url);
+  }
  
 }
 

@@ -1,25 +1,49 @@
 <ion-content [fullscreen]="true">
   <div id="container">
 
-    <div [ngClass]="{'parpadeo': mostrarParpadeo}">
-      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
-    </div>
+    <ion-grid style="margin-left: 3px; margin-right: 3px;">
+      <ion-row>
+        <ion-col size="6">
+          <div id="header" [ngClass]="{'parpadeo': mostrarParpadeo}">
+            <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
+          </div>
+        </ion-col>
+    
+        <ion-col size="2"></ion-col>
+    
+        <ion-col size="2" >
+          <ion-fab>
+            <ion-fab-button color="dark">
+              <img src="../../assets/img/all-animals.png" (click)="redireccionar('animales')">
+            </ion-fab-button>
+          </ion-fab>
+        </ion-col>
+    
+        <ion-col size="2" >
+          <ion-fab>
+            <ion-fab-button color="dark">
+              <img src="../../assets/img/all-color.png"  (click)="redireccionar('colores')">
+            </ion-fab-button>
+          </ion-fab>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   
     <!-- Utiliza ngIf para mostrar diferentes estructuras según la orientación -->
     <ng-container *ngIf="orientation === 'landscape-primary'; else portraitLayout">
-      <br><br><br>
-      <ion-grid>
+      <br>
+      <ion-grid fixed="true">
         <!-- Generamos dos filas -->
-        <ion-row>
+        <ion-row style="height: 10%;">
           <!-- Primera fila con seis elementos de tamaño 4 -->
           <ion-col *ngFor="let numero of numeros.slice(0, 6)" size="2">
             <img src="../../assets/img/numeros/{{numero}}.png" alt="" (click)="reproducirAudio(numero +'.mp3')">
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row  style="height: 10%;" >
           <!-- Segunda fila con cuatro elementos de tamaño 6 -->
-          <ion-col *ngFor="let numero of numeros.slice(6, 10)" size="3">
-            <img height="100px" width="auto" src="../../assets/img/numeros/{{numero}}.png" alt="" (click)="reproducirAudio(numero +'.mp3')">
+          <ion-col *ngFor="let numero of numeros.slice(6, 10)" size="3" style="height: 10px;">
+            <img src="../../assets/img/numeros/{{numero}}.png" alt="" (click)="reproducirAudio(numero +'.mp3')">
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -28,9 +52,9 @@
     <ng-template #portraitLayout>
       <br>
       <ion-grid>
-        <ion-row>
-          <ion-col size="6" *ngFor="let numero of numeros">
-            <img height="105px" src="../../assets/img/numeros/{{numero}}.png" alt="" (click)="reproducirAudio(numero +'.mp3')">
+        <ion-row >
+          <ion-col size="6" *ngFor="let numero of numeros" > 
+            <img style="height: 90px; width: auto;" src="../../assets/img/numeros/{{numero}}.png" alt="" (click)="reproducirAudio(numero +'.mp3')">
           </ion-col>
         </ion-row>
       </ion-grid>

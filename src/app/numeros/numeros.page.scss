@@ -35,3 +35,9 @@ img {
     width: 60%; /* Ajusta el ancho de las imágenes para pantallas más pequeñas */
   }
 }
+.fab-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
