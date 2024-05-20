@@ -1,13 +1,11 @@
 <ion-content [fullscreen]="true">
   <div id="container">
+    <div id="header" [ngClass]="{'parpadeo': mostrarParpadeo}">
+      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
+    </div>
 
-          <div id="header" [ngClass]="{'parpadeo': mostrarParpadeo}">
-            <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
-          </div>
-       
-
-    <ng-container *ngIf="orientation === 'landscape-primary'; else portraitLayout">
-      <ion-grid fixed="true" style="margin-top:20px;"  >
+    <ng-container *ngIf="orientation === 'landscape-primary' || orientation === 'landscape-secondary'; else portraitLayout">
+      <ion-grid fixed="true" style="margin-top:20px;">
         <ion-row>
           <ion-col *ngFor="let animal of animales.slice(0, 6)" size="2">
             <div class="landscape-row">
@@ -35,16 +33,13 @@
       </ion-grid>
     </ng-template>
 
-
     <ion-fab slot="fixed" horizontal="end" vertical="bottom">
       <ion-fab-button color="dark">
-        <img style="padding: 5px;" src="../../assets/img/all-numbers.png" (click)="redireccionar('numeros')">
+        <img src="../../assets/img/all-numbers.png" (click)="redireccionar('numeros')">
       </ion-fab-button>
-    
       <ion-fab-button color="dark">
         <img src="../../assets/img/all-color.png" (click)="redireccionar('colores')">
       </ion-fab-button>
     </ion-fab>
-
   </div>
 </ion-content>

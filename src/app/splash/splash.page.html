@@ -1,18 +1,17 @@
 <ion-content [fullscreen]="true">
-
-  <div id="container">
-
-    <h1 style="color: rgb(127, 77, 127); font-weight: 900;">Tabla Didáctica</h1>
-
-    <br><br><br>
-    <div >
-      <img class="logo-container" height="150px" src="../../assets/img/world.png" alt="">
-    </div>
-
-    <br><br><br>
-
-    <h3 style="color: rgb(127, 77, 127); font-weight: 900;" >Bilotta Agustina 4° A</h3>
-
+  <!-- Splash screen -->
+  <div id="splash-screen" [ngClass]="{'hidden': !showSplash}">
+    <img class="splash-icon" src="../../assets/img/world.png" alt="">
   </div>
 
+  <!-- Main content -->
+  <div id="container" [ngClass]="{'hidden': showSplash, 'fade-in': isFadedIn}">
+    <h1 style="color: rgb(127, 77, 127); font-weight: 900;">Tabla Didáctica</h1>
+    <br><br><br>
+    <div>
+      <img class="logo-container" height="150px" src="../../assets/img/world.png" alt="">
+    </div>
+    <br><br><br>
+    <h3 style="color: rgb(127, 77, 127); font-weight: 900;">Bilotta Agustina 4° A</h3>
+  </div>
 </ion-content>

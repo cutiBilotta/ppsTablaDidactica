@@ -1,63 +1,89 @@
+#splash-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: opacity 0.5s;
+}
+
+.splash-icon {
+  width: 150px;
+  height: 150px;
+}
+
 #container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: white;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 2s;
+}
 
-  
-  #container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../assets/img/fondo.jpeg');
-    background-size: cover;
-    opacity: 0.1;
-    z-index: -1;
-  }
+#container.fade-in {
+  opacity: 1;
+}
 
-  *{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
+.hidden {
+  display: none;
+}
 
+#container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/img/fondo.jpeg');
+  background-size: cover;
+  opacity: 0.1;
+  z-index: -1;
+}
 
+* {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
-  .logo-container{
-    animation: rotate-scale-up 4s infinite; /* Ajusta la duración y repetición según sea necesario */
+.logo-container {
+  animation: rotate-scale-up 4s infinite;
+}
+
+@-webkit-keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
   }
-  
-  @-webkit-keyframes rotate-scale-up {
-    0% {
-      -webkit-transform: scale(1) rotateZ(0);
-      transform: scale(1) rotateZ(0);
-    }
-    50% {
-      -webkit-transform: scale(2) rotateZ(180deg);
-      transform: scale(2) rotateZ(180deg);
-    }
-    100% {
-      -webkit-transform: scale(1) rotateZ(360deg);
-      transform: scale(1) rotateZ(360deg);
-    }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+    transform: scale(2) rotateZ(180deg);
   }
-  
-  @keyframes rotate-scale-up {
-    0% {
-      -webkit-transform: scale(1) rotateZ(0);
-      transform: scale(1) rotateZ(0);
-    }
-    50% {
-      -webkit-transform: scale(2) rotateZ(180deg);
-      transform: scale(2) rotateZ(180deg);
-    }
-    100% {
-      -webkit-transform: scale(1) rotateZ(360deg);
-      transform: scale(1) rotateZ(360deg);
-    }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
   }
+}
+
+@keyframes rotate-scale-up {
+  0% {
+    -webkit-transform: scale(1) rotateZ(0);
+    transform: scale(1) rotateZ(0);
+  }
+  50% {
+    -webkit-transform: scale(2) rotateZ(180deg);
+    transform: scale(2) rotateZ(180deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateZ(360deg);
+    transform: scale(1) rotateZ(360deg);
+  }
+}

@@ -10,22 +10,21 @@ import { ScreenOrientation } from '@capacitor/screen-orientation';
 })
 export class ColoresPage implements OnInit {
 
-
-  constructor(private route: Router, private router: ActivatedRoute) { }
-
-  private idiomaSeleccionado : string="";
-  
+  private idiomaSeleccionado: string = '';
   orientation: string = '';
   audioSrc: string = "../../assets/audios/colores/"; 
   preload: boolean = true;
-  mostrarParpadeo:boolean = false;
-  public colores = ['negro' , 'amarillo', 'azul', 'blanco', 'rojo','verde', 'violeta', 'gris', 'rosa', 'naranja']
+  mostrarParpadeo: boolean = false;
+  public colores = ['negro', 'amarillo', 'azul', 'blanco', 'rojo', 'verde', 'violeta', 'gris', 'rosa', 'naranja'];
+
+  constructor(private route: Router, private router: ActivatedRoute) { }
+
   ngOnInit() {
     // Obtener la orientación actual de la pantalla al inicio
     this.getOrientation();
 
     // Escuchar cambios en la orientación de la pantalla
-    ScreenOrientation.addListener('screenOrientationChange', (orientation) => {
+    ScreenOrientation.addListener('screenOrientationChange', () => {
       this.getOrientation();
     });
   }
@@ -34,12 +33,12 @@ export class ColoresPage implements OnInit {
     ScreenOrientation.orientation()
       .then((result) => {
         this.orientation = result.type;
+        console.log('Orientación de la pantalla:', this.orientation);
       })
       .catch((error) => {
         console.error('Error al obtener la orientación de la pantalla:', error);
       });
   }
-
 
   onIdiomaSeleccionado(idioma: string) {
     this.idiomaSeleccionado = idioma;
@@ -47,28 +46,22 @@ export class ColoresPage implements OnInit {
   
   reproducirAudio(nombreArchivo: string) {
     console.log(this.idiomaSeleccionado);
-    if(this.idiomaSeleccionado=="" || this.idiomaSeleccionado == undefined){
+    if (this.idiomaSeleccionado == "" || this.idiomaSeleccionado == undefined) {
       this.mostrarParpadeo = true;
       setTimeout(() => {
         this.mostrarParpadeo = false;
       }, 4000); // 4000 milisegundos = 4 segundos
-    
-  }else{
-    let audio = new Audio("../../assets/audios/" + this.idiomaSeleccionado +"/colores/" + nombreArchivo);
-    audio.play();
+    } else {
+      let audio = new Audio("../../assets/audios/" + this.idiomaSeleccionado + "/colores/" + nombreArchivo);
+      audio.play();
+    }
   }
-}
-
 
   audioEnded() {
     console.log('Audio terminado');
   }
 
-  redireccionar(url: string){
-
+  redireccionar(url: string) {
     this.route.navigateByUrl(url);
   }
- 
 }
-
-
