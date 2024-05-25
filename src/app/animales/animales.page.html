@@ -1,22 +1,21 @@
 <ion-content [fullscreen]="true">
   <div id="container">
-    <div id="header" [ngClass]="{'parpadeo': mostrarParpadeo}">
-      <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
-    </div>
+    
+
 
     <ng-container *ngIf="orientation === 'landscape-primary' || orientation === 'landscape-secondary'; else portraitLayout">
       <ion-grid fixed="true" style="margin-top:20px;">
         <ion-row>
           <ion-col *ngFor="let animal of animales.slice(0, 6)" size="2">
             <div class="landscape-row">
-              <img src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
+              <img style="height: 95px; width:120px; background-color: antiquewhite; border-radius: 20%; padding: 10px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
             </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col *ngFor="let animal of animales.slice(6, 10)" size="3">
             <div class="landscape-row">
-              <img style="height: 95px;" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
+              <img style="height: 95px; width:95px; background-color: antiquewhite; border-radius: 20%; padding: 10px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal + '.mp3')">
             </div>
           </ion-col>
         </ion-row>
@@ -24,22 +23,31 @@
     </ng-container>
 
     <ng-template #portraitLayout>
+      <br><br><br>
       <ion-grid fixed="true">
         <ion-row>
           <ion-col size="6" *ngFor="let animal of animales" style="justify-content: center; text-align: center;">
-            <img style="height: 90px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal +'.mp3')">
+            <img style="height: 105px;width:105px ; background-color: antiquewhite; border-radius: 20%; padding: 10px" src="../../assets/img/animales/{{animal}}.png" alt="" (click)="reproducirAudio(animal +'.mp3')">
           </ion-col>
         </ion-row>
       </ion-grid>
     </ng-template>
-
     <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+     
       <ion-fab-button color="dark">
-        <img src="../../assets/img/all-numbers.png" (click)="redireccionar('numeros')">
+        <img  src="../../assets/img/all-color.png" (click)="redireccionar('colores')">
       </ion-fab-button>
+      <br>
       <ion-fab-button color="dark">
-        <img src="../../assets/img/all-color.png" (click)="redireccionar('colores')">
+        <img id="imgIdioma" [src]="imgSrc" (click)="seleccionarIdioma()">
       </ion-fab-button>
+      <br>
+      <ion-fab-button color="warning">
+        <img  style="padding: 5px;" src="../../assets/img/logOff.png" (click)="cerrarSesion()">
+      </ion-fab-button>
+      
     </ion-fab>
+
+   
   </div>
 </ion-content>

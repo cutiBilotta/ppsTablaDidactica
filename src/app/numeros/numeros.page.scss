@@ -19,7 +19,7 @@
   height: 100%;
   background-image: url('../../assets/img/fondo.jpeg');
   background-size: cover;
-  opacity: 0.3; /* Ajusta la opacidad según tu preferencia */
+  opacity: 0.1; /* Ajusta la opacidad según tu preferencia */
   z-index: -1; /* Asegura que esté detrás de los elementos hijos */
 }
 
@@ -39,8 +39,3 @@ img {
 }
 
 /* Media queries para ajustar el diseño en función del tamaño de la pantalla */
-@media (max-width: 768px) {
-  img {
-    width: 60%; /* Ajusta el ancho de las imágenes para pantallas más pequeñas */
-  }
-}

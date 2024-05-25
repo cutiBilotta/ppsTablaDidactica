@@ -1,75 +1,59 @@
-
 <ion-content>
+
   <div id="container">
 
-    <br><br>
+    <div>
+      <img src="../../assets/img/kids1.jpg" style="height: 40%;" alt="">
+    </div>
 
+    <div class="ion-text-center" style="background-color: rgb(181, 178, 242); align-items: center; justify-content: center;">
+     <br><br>
+      <img src="../../assets/img/world.png" alt="" style="height: 100px;">
+<br><br>
+      <ion-item style="margin-right: 20px; margin-left: 20px;">
+        <ion-label>Email: </ion-label>
+        <ion-input type="email" [(ngModel)]="usuario.correo" name="email"></ion-input>
+      </ion-item>
+      <br><br>
+      <ion-item style="margin-right: 20px; margin-left: 20px;">
+        <ion-label>Clave: </ion-label>
+        <ion-input type="password" [(ngModel)]="usuario.password" name="password"></ion-input>
+      </ion-item>
+
+      <br><br>
+      <ion-button color="secondary" shape="round"  block (click)="verificarUsuarioExistente()">Ingresar</ion-button><br>
+
+      <div *ngIf="mostrarSpinner" class="spinner">
+        <img src="../../assets/img/world.png" height="30px" class="spinner">
+      </div>
+      <br>
+
+      <div class="ion-align-items-center ion-text-center" style="display: inline-block;">
+        <br><br>
+        <ion-button  block (click)="autocompletarUsurio1()"><img style="height: 50px; width: auto;" src="../../assets/img/user.png" alt=""></ion-button>
+       
     
+        <ion-button   block (click)="autocompletarUsurio2()"><img style="height: 50px; width: auto;" src="../../assets/img/invitado.png" alt=""></ion-button>
+       
+    
+        <ion-button  class="ion-button-small"  block (click)="autocompletarUsurio3()"><img style="height: 50px; width: auto;" src="../../assets/img/admin.png" alt=""></ion-button>
+         
+      </div>
 
-    <br>
-   <ion-card style="background-color: #ddd;" >
-<br>
-    <div style="display: flex; justify-content: center;">
-      <img src="../../assets/img/world.png" height="100px">
-    </div>
- 
-   <ion-card-header class="ion-text-center ion-text-bold">
-     Login
-    </ion-card-header>
-    <ion-card-content>
-     <ion-item>
-       <ion-label>Email: </ion-label>
-       <ion-input type="email" [(ngModel)]="usuario.correo" name="email"></ion-input>
-     </ion-item>
-     
-     <br> 
-     
-     <ion-item>
-       <ion-label>Password: </ion-label>
-       <ion-input type="password" [(ngModel)]="usuario.password" name="password"></ion-input>
-     </ion-item>
-     
-   <br> 
-     <div class="ion-align-items-center ion-text-center">
-       <ion-button color="secondary" shape="round"  block (click)="verificarUsuarioExistente()">Ingresar</ion-button>
-       <br>  
- 
- 
-       <div *ngIf="mensaje">
-           {{mensaje}}
-       </div>
-     </div>
-
-     <div *ngIf="mostrarSpinner" class="spinner">
-      <img src="../../assets/img/world.png" height="30px" class="spinner">
+      <br><br>
     </div>
 
 
-     <div class="ion-align-items-center ion-text-center">
-      <br><p>Perfiles para acceso rápido:</p> <br>
 
-      <ion-button shape="round"  block (click)="autocompletarUsurio1()">Admin</ion-button>
-      <br>  
-    </div>
-  
-    <div class="ion-align-items-center ion-text-center">
-      <ion-button  shape="round"  block (click)="autocompletarUsurio2()">Invitado</ion-button>
-      <br>  
-    </div>
-  
-    <div class="ion-align-items-center ion-text-center">
-      <ion-button shape="round" class="ion-button-small"  block (click)="autocompletarUsurio3()">Usuario</ion-button>
-      <br>  
-    </div>
- 
- 
-   </ion-card-content>
- </ion-card>
 
- 
- <br>
- 
- 
- 
-</div>
- </ion-content>
+
+
+
+
+  </div>
+
+
+
+
+
+</ion-content>

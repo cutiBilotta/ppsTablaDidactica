@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ScreenOrientation } from '@capacitor/screen-orientation';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-numeros',
   templateUrl: './numeros.page.html',
@@ -10,20 +10,19 @@ import { ScreenOrientation } from '@capacitor/screen-orientation';
 })
 export class NumerosPage implements OnInit {
 
-  private idiomaSeleccionado: string = '';
+  private idiomaSeleccionado: string = 'espaniol';
   orientation: string = '';
   audioSrc: string = "../../assets/audios/numeros/";
   preload: boolean = true;
   mostrarParpadeo: boolean = false;
+  imgSrc: string = '../../assets/img/flauarg.png';
+
   public numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  constructor(private route: Router, private router: ActivatedRoute, private ngZone: NgZone) { }
+  constructor(private route: Router, private router: ActivatedRoute, private ngZone: NgZone, private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    this.router.queryParams.subscribe(params => {
-      this.idiomaSeleccionado = params['dato'];
-    });
-
+    
     // Obtener la orientación actual de la pantalla al inicio
     this.getOrientation();
 
@@ -69,6 +68,31 @@ export class NumerosPage implements OnInit {
 
   redireccionar(url: string) {
     this.route.navigateByUrl(url);
+  }
+
+  seleccionarIdioma() {
+    const img = document.getElementById('imgIdioma') as HTMLImageElement;
+
+    if (this.idiomaSeleccionado === 'espaniol') {
+      this.idiomaSeleccionado = 'portugues';
+      this.imgSrc = '../../assets/img/flagbr.png';
+    } else if (this.idiomaSeleccionado === 'portugues') {
+      this.idiomaSeleccionado = 'ingles';
+      this.imgSrc = '../../assets/img/flageu.png';
+    } else {
+      this.idiomaSeleccionado = 'espaniol';
+      this.imgSrc = '../../assets/img/flauarg.png';
+    }
+  }
+
+  
+  async cerrarSesion() {
+
+
+  
+    // Cerrar la sesión y redirigir al usuario a la página de inicio de sesión
+    await this.afAuth.signOut();
+    this.route.navigateByUrl('login');
   }
 }
 

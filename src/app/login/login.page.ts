@@ -20,6 +20,7 @@ export class LoginPage implements OnInit {
   mensaje : string = "";
   mostrarSpinner : boolean= false;
   listaUsuarios: any[] = [];
+  public idioma: string = "espaniol";
   constructor(private database: DatabaseService, public router: Router, private afAuth: AngularFireAuth){
 
   }
@@ -49,7 +50,7 @@ export class LoginPage implements OnInit {
         // El usuario ha iniciado sesión correctamente
         this.usuario.correo = "";
         this.usuario.password = "";
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('animales');
       } catch (error) {
         // Ocurrió un error durante el inicio de sesión
         console.log(this.usuario.correo, this.usuario.password);
@@ -84,4 +85,6 @@ export class LoginPage implements OnInit {
     this.usuario.correo = "usuario@usuario.com";
     this.usuario.password = "333333";
   }
+
+  
 }

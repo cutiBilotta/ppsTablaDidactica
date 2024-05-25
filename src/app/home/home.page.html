@@ -1,13 +1,57 @@
 <ion-content>
   <div id="container">
 
-    <app-idiomas (idiomaSeleccionado)="onIdiomaSeleccionado($event)"></app-idiomas>
+    <ng-container *ngIf="orientation === 'landscape-primary' || orientation === 'landscape-secondary'; else portraitLayout">
+      <br>
+      <ion-grid fixed="true">
+        <ion-row >
+          <ion-col size="4">
+            <img class="img" src="../../assets/img/all-animals.png" alt="" height="180px" width="180px" (click)="elegirSeccion('animales')">
+
+          </ion-col>
+
+          <ion-col size="4">
+            <img class="img" src="../../assets/img/all-color.png" alt="" height="180px" width="180px" (click)="elegirSeccion('colores')">
+
+          </ion-col>
+
+          <ion-col size="4">
+            <img class="img" src="../../assets/img/all-numbers.png" alt="" height="180px" width="180px" (click)="elegirSeccion('numeros')">
+
+          </ion-col>
+        </ion-row>
+      
+      </ion-grid>
+    </ng-container>
+
+    <ng-template #portraitLayout>
+      <br>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" >
+            <img class="img" src="../../assets/img/all-animals.png" alt="" height="180px" width="180px" (click)="elegirSeccion('animales')">
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12" >
+            <img class="img" src="../../assets/img/all-color.png" alt="" height="180px" width="180px" (click)="elegirSeccion('colores')">
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12" >
+            <img class="img" src="../../assets/img/all-numbers.png" alt="" height="180px" width="180px" >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+
+
 
 
     <br>
-    <img class="img" src="../../assets/img/all-animals.png" alt="" height="180px" width="180px" (click)="elegirSeccion('animales')">
-    <img class="img" src="../../assets/img/all-color.png" alt="" height="180px" width="180px" (click)="elegirSeccion('colores')">
-    <img class="img" src="../../assets/img/all-numbers.png" alt="" height="180px" width="180px" (click)="elegirSeccion('numeros')">
+    
     <img class="logoff-img" src="../../assets/img/logOff.png" alt="" (click)="cerrarSesion()">
   </div>
 </ion-content>
